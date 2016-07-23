@@ -79,7 +79,7 @@ echo "%%%%%%%%% combine meg %%%%%%%%%%"
 echo ${combined[@]}
 
 echo "total msg : " ${combined[@]} |wc -w
-echo "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+echo "%%%%%%%%%%%%%%----------------%%%%%%%%%%%%%%%%%"
 
 if [ -n "$b" ]
 then
