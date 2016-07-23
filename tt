@@ -6,17 +6,14 @@ read  branch1 branch2 branch3
 #branch=0
 crnt_branch=`git branch | cut -d ' ' -f2`
 #this loop with call function with branch name as input
-n=0
 for b in  $branch1 $branch2 $branch3
 do
-
-
 #check current branch 
 #crnt_branch=`git branch | cut -d ' ' -f2`
 verify__branch=`git branch | cut -d ' ' -f2 | egrep ^\$b\$`
 
 #function for getting log for each brach
-#           function hello {
+           function hello {
 #if not at right branch then checkout to branch first              
 if [ -z "$verify__branch" ]
   then
@@ -27,59 +24,52 @@ echo "collacting info"
 fi
 #if on first branch grep and sort msg.
 
-#---------------------------------------------------
-#if [[ "$b" == "$branch1" ]]
-#then
-
 br_msg=(`git log --oneline | egrep ' [A-Z]{1,3}-[0-9]{1,6}$' |cut -d' ' -f2|sort -u`)
+if [[ "$b" == "$branch1" ]]
+then
+
+#br_msg1=(`git log --oneline | egrep ' [A-Z]{1,3}-[0-9]{1,6}$' |cut -d' ' -f2|sort -u`)
 
 msg_cont1=(`echo ${br_msg[@]} |wc -w`)
-
-if [ "$n" = 0 ]; then
 echo "### first branch ###"
 echo "${br_msg[@]}"
 echo "total msg :""$msg_cont1"
 echo "%%%%%%%%%moving to next branch%%%%%%%%%%%%%%%%"
 br_msg1=( "${br_msg[@]}" )
-#fi
-elif [ "$n" = 1 ]; then
-
+fi
 # if on second branch
 
-#if [[ "$b" == "$branch2" ]]
-#then
+if [[ "$b" == "$branch2" ]]
+then
 #br_msg2=(`git log --oneline | egrep ' [A-Z]{1,3}-[0-9]{1,6}$' |cut -d' ' -f2|sort -u`)
 
 msg_cont2=(`echo ${br_msg[@]} |wc -w`)
 echo "##### second branch  ########"
 echo "${br_msg[@]}"
 echo "total msg: ""$msg_cont2"
-echo "%%%%%%%%%moving to next branch%%%%%%%%%%%%%%"
+echo "%%%%%%%%%moving to next branch%%%%%%%%%%%%%%%%"
 br_msg2=( "${br_msg[@]}" )
-
-#fi
+fi
 #if on third branch
-#if [[ "$b" == "$branch3" ]]
-#then
-elif [ "$n" = 2 ]; then
-
+if [[ "$b" == "$branch3" ]]
+then
+echo "$loop"
 #br_msg3=(`git log --oneline | egrep ' [A-Z]{1,3}-[0-9]{1,6}$' |cut -d' ' -f2|sort -u`)
 msg_cont3=(`echo ${br_msg[@]}|wc -w`)
 echo "##### third branch  ########"
 echo "${br_msg[@]}"
 echo "total msg: ""$msg_cont3"
 echo "%%%%%%%%%% end of third branch %%%%%%%%%%%%%%%%%"
-br_msg3=( "${br_msg[@]}" )
+br_msg1=( "${br_msg[@]}" )
 # marge all array in one array
 #combined=( "${br_msg1[@]}" "${br_msg2[@]}" "${br_msg3[@]}" )
-#fi
-#}
-#           hello $b
 fi
-let n=$n+1
-done
+}
+           hello $b
 
 combined=( "${br_msg1[@]}" "${br_msg2[@]}" "${br_msg3[@]}" )
+done
+
 # combined array output eliment and element count 
 echo "combine output"
 echo "%%%%%%%%% combine meg %%%%%%%%%%"
