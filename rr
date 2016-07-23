@@ -55,6 +55,20 @@ for b in  $branch1 $branch2 $branch3; do
                         echo  "============================="
                         ###########################
                 fi
+
+                if [[ "$b" == "$branch4" ]]; then
+
+                        br_msg4=( "${br_msg[@]}" )
+                        msg_cont4=(`echo ${br_msg4[@]}|wc -w`)
+                        echo "${br_msg3[@]}"
+                        echo "sorted message count: ""$msg_cont3"
+                        echo  "-----------------------------"
+                        echo  "============================="
+                        ###########################
+                fi
+
+
+
         }
                         #end of function
 
@@ -64,12 +78,11 @@ done
 #loop ended
 
 ################################################################
-#if you want to see all combined output you can uncomment below 4 lines
+#if you want to see all combined output you can uncomment below  lines starts with echo.
 
 #echo "combine output"
 #echo ${combined[@]}
 
-#echo "total msg : " ${combined[@]} |wc -w
 #echo "%------------end-------------%"
 ####################################################################
 #sorting common msg from combined array
