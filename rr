@@ -144,7 +144,7 @@ fi
 trc=( "${msg1[@]}" "${msg2[@]}" "${msg3[@]}" ) #combining
 tr=(`echo "${trc[@]}" | tr ' ' '\n' | sort -u`) #sorting unique values
 #final result loop for printing common msg table
-k=0
+#---------------98989
 for f in ${tr[@]}; do #this array have only common msg out of all branches
 k1=0
 k2=0
