@@ -132,9 +132,10 @@ if [  -n "$b"  ]; then #checking for string lenth zero
                                  msg3+=( "$item" )
                         fi
 
-                fi
-
-
+                
+		else
+    		 result+=( "    -    " )
+		fi
         let it=$it+1
         done
 
