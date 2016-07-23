@@ -115,7 +115,7 @@ if [  -n "$b"  ]; then #checking for string lenth zero
         #filttering only common msg in all branch
         it=0
         for item in ${combined[@]}; do
-        let k=0
+        k=0
                 for iti in ${sorted_unique_ids[@]}; do
 
                         if [ "$item" = "$iti" ] ; then 
