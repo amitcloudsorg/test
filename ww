@@ -59,7 +59,6 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
                 fi
 
                         echo  "-----------------------------"
-                        echo  "   "
                         echo  "-----------------------------"
 
         }
