@@ -35,7 +35,7 @@ echo "### first branch ###"
 echo "${br_msg[@]}"
 echo "total msg :""$msg_cont1"
 echo "%%%%%%%%%moving to next branch%%%%%%%%%%%%%%%%"
-br_msg1=( "${br_msg[@]}" )
+br_msg1=("${br_msg[@]}")
 fi
 # if on second branch
 
@@ -48,7 +48,7 @@ echo "##### second branch  ########"
 echo "${br_msg[@]}"
 echo "total msg: ""$msg_cont2"
 echo "%%%%%%%%%moving to next branch%%%%%%%%%%%%%%%%"
-br_msg2=( "${br_msg[@]}" )
+br_msg2=("${br_msg[@]}")
 fi
 #if on third branch
 if [[ "$b" == "$branch3" ]]
@@ -60,7 +60,7 @@ echo "##### third branch  ########"
 echo "${br_msg[@]}"
 echo "total msg: ""$msg_cont3"
 echo "%%%%%%%%%% end of third branch %%%%%%%%%%%%%%%%%"
-br_msg1=( "${br_msg[@]}" )
+br_msg1=("${br_msg[@]}")
 # marge all array in one array
 #combined=( "${br_msg1[@]}" "${br_msg2[@]}" "${br_msg3[@]}" )
 fi
