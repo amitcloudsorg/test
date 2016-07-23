@@ -22,18 +22,16 @@ for b in  $branch1 $branch2 $branch3; do
 
                         echo "${br_msg[@]}" #printing all stored msg in array.
                         #echo "sorted message count: ""$msg_cont1"  #printing msg count in array
-                        echo  "============================="
-                        echo  "-----------------------------"
                 # grep and sorting msg from first branch.
                 if [[ "$b" == "$branch1" ]];then
                         
                         
                         msg_cont1=(`echo ${br_msg[@]} |wc -w`) #counting stored msg in array
                         br_msg1=( "${br_msg[@]}" )
-                        echo "${br_msg1[@]}" #printing all stored msg in array.
+                        #echo "${br_msg1[@]}" #printing all stored msg in array.
                         echo "sorted message count: ""$msg_cont1"  #printing msg count in array
-                        echo  "============================="
-                        echo  "-----------------------------"
+                        #echo  "============================="
+                        #echo  "-----------------------------"
                 fi
                 ###########################
                 #on second branch we have same process as above# 
