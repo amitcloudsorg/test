@@ -70,7 +70,7 @@ fi
 }
            hello $b
 
-combined=( "${br_msg1[@]}""${br_msg2[@]}""${br_msg3[@]}" )
+combined=( "${br_msg1[@]}" "${br_msg2[@]}" "${br_msg3[@]}" )
 done
 
 # combined array output eliment and element count 
