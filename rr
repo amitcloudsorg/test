@@ -41,8 +41,8 @@ for b in  $branch1 $branch2 $branch3; do
                         msg_cont2=(`echo ${br_msg2[@]} |wc -w`) #counting stored msg in array
                         echo "${br_msg2[@]}"
                         echo "sorted message count: ""$msg_cont2"
-                        echo  "============================="
-                        echo  "-----------------------------"
+                        #echo  "============================="
+                        #echo  "-----------------------------"
                 fi
                 ###########################
                 #same steps as on above two branches.
@@ -53,8 +53,8 @@ for b in  $branch1 $branch2 $branch3; do
                         msg_cont3=(`echo ${br_msg3[@]}|wc -w`)
                         echo "${br_msg3[@]}"
                         echo "sorted message count: ""$msg_cont3"
-                        echo  "-----------------------------"
-                        echo  "============================="
+                        #echo  "-----------------------------"
+                        #echo  "============================="
                         ###########################
                 fi
 
@@ -64,12 +64,14 @@ for b in  $branch1 $branch2 $branch3; do
                         msg_cont4=(`echo ${br_msg4[@]}|wc -w`)
                         echo "${br_msg3[@]}"
                         echo "sorted message count: ""$msg_cont3"
-                        echo  "-----------------------------"
-                        echo  "============================="
+                        #echo  "-----------------------------"
+                        #echo  "============================="
                         ###########################
                 fi
 
 
+                        echo  "-----------------------------"
+                        echo  "============================="
 
         }
                         #end of function
