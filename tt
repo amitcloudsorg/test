@@ -47,7 +47,7 @@ then
 msg_cont2=(`echo ${br_msg[@]} |wc -w`)
 echo "##### second branch  ########"
 br_msg2=("${br_msg[@]}")
-echo "${br_msg1[@]}"
+echo "${br_msg2[@]}"
 echo "total msg: ""$msg_cont2"
 echo "%%%%%%%%%moving to next branch%%%%%%%%%%%%%%%%"
 #br_msg2=("${br_msg[@]}")
@@ -59,8 +59,8 @@ echo "$loop"
 #br_msg3=(`git log --oneline | egrep ' [A-Z]{1,3}-[0-9]{1,6}$' |cut -d' ' -f2|sort -u`)
 msg_cont3=(`echo ${br_msg[@]}|wc -w`)
 echo "##### third branch  ########"
-br_msg1=("${br_msg[@]}")
-echo "${br_msg1[@]}"
+br_msg3=("${br_msg[@]}")
+echo "${br_msg3[@]}"
 echo "total msg: ""$msg_cont3"
 echo "%%%%%%%%%% end of third branch %%%%%%%%%%%%%%%%%"
 #br_msg1=("${br_msg[@]}")
