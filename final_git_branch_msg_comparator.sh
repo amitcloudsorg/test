@@ -18,7 +18,7 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
                         echo  "-----------------------------"
                         echo "sorted messages in $b"
                 fi
-                br_msg=(`git log --oneline | egrep ' [A-Z]{1,3}-[0-9]{1,6}$' |sort -u`) #machine msg pattern and sorting msg in alphabetical order. "XXX-123456"
+                br_msg=(`git log --oneline | egrep ' [A-Z]{1,3}-[0-9]{1,6}$' |cut -d' ' -f2|sort -u`) #machine msg pattern and sorting msg in alphabetical order. "XXX-123456"
 
                         echo "${br_msg[@]}" #printing all stored msg in array.
                         
