@@ -3,7 +3,10 @@
 
 #echo -n  "Enter 2 to 4 branches name sprated by white separated : "
 #read user input
-read  branch1 branch2 branch3 branch4
+branch1=$1
+branch2=$2
+branch3=$3 
+branch4=$4
 #branch=0
 crnt_branch=`git branch | cut -d ' ' -f2`
 #this loop with call function with branch name as input
