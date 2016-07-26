@@ -1,4 +1,5 @@
 #!/bin/bash
+#
 
 echo -n  "Enter 2 to 4 branches name sprated by white separated : "
 #read user input
