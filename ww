@@ -12,7 +12,7 @@ crnt_branch=`git branch | cut -d ' ' -f2`
 #this loop with call function with branch name as input
 for b in  $branch1 $branch2 $branch3 $branch4; do
         #function "git " for getting log for each branch
-        function collect_commit_msg {
+        #function collect_commit_msg {
                 # verify inserted branch
                 verify_branch=`git branch | cut -d ' ' -f2 | egrep ^\$b\$`
                 #checking for "verify_branch" value to not be zero
@@ -65,7 +65,7 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
 
                         echo  "-----------------------------"
 
-        }
+       # }
                         #end of function
 
    collect_commit_msg  $b       #calling function alone with branches name as input
