@@ -20,7 +20,7 @@ for b in  $branch1 $branch2 $branch3; do
 		fi
 		# grep and sorting msg from first branch.
 		if [[ "$b" == "$branch1" ]];then
-   			br_msg1=(`git log --oneline | egrep ' [A-Z]{1,3}-[0-9]{1,6}$' |cut -d' ' -f2|sort -u`) #machine msg pattern and sorting msg in alphabetical order.
+   			br_msg1=(`git log --oneline | egrep -o ' [A-Z]{1,3}-[0-9]{1,6}$' |cut -d' ' -f2|sort -u`) #machine msg pattern and sorting msg in alphabetical order.
 
    			msg_cont1=(`echo ${br_msg1[@]} |wc -w`) #counting stored msg in array
    			echo "${br_msg1[@]}" #printing all stored msg in array.
