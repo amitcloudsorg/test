@@ -9,10 +9,7 @@ branch3=$3
 branch4=$4
 #branch=0
 crnt_branch=`git branch | cut -d ' ' -f2`
-#this loop with call function with branch name as input
 for b in  $branch1 $branch2 $branch3 $branch4; do
-        #function "git " for getting log for each branch
- #       function collect_commit_msg {
                 # verify inserted branch
                 verify_branch=`git branch | cut -d ' ' -f2 | egrep ^\$b\$`
                 #checking for "verify_branch" value to not be zero
@@ -23,9 +20,7 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
                         echo "sorted messages in $b"
                 fi
                 br_msg=(`git log | egrep -o '[A-Z]{1,3}-[0-9]{1,6}$'|sort -u`) #machine msg pattern and sorting msg in alphabetical order. "XXX-123456"
-                #br_msg=(`git log --oneline | egrep -o ' [A-Z]{1,3}-[0-9]{1,6}$'|sort -u`) #machine msg pattern and sorting msg in alphabetical order. "XXX-123456"
 
-#                        echo "${br_msg[@]}" #printing all stored msg in array.
 
                 if [[ "$b" == "$branch1" ]];then
 
@@ -194,6 +189,7 @@ for i in ${tr[@]}; do   # loop to print the final result
         let k=$k+1
 done
 echo "-----------------------------------------------------"
+ printf "| %-10s | %-10s | %-10s | %-10s | "$msg_cont1" "$msg_cont2" "$msg_cont3"
         #will switch to the same branch where from the script has been executed
 `git checkout $crnt_branch`
 
