@@ -1,13 +1,9 @@
 #!/bin/bash
-#
-
-#echo -n  "Enter 2 to 4 branches name sprated by white separated : "
 #read user input
 branch1=$1
 branch2=$2
 branch3=$3
 branch4=$4
-#branch=0
 crnt_branch=`git branch | cut -d ' ' -f2`
 for b in  $branch1 $branch2 $branch3 $branch4; do
                 # verify inserted branch
@@ -105,7 +101,6 @@ if [  -n "$b"  ]; then #checking for string lenth zero
                                  msg4+=( "$com" )
                         fi
 
-
                 fi
         let it=$it+1
         done
@@ -150,7 +145,6 @@ k4=0
                  rt1+=( "    -      " )
 		 dt1+=( "           " )
         else
-                 #dt1+=( `awk 'NR==1{print  "$f" " "$3 "-" $4 "-" $6}' /tmp/git1 |cut -d ' ' -f2` )
                  dt1+=( `grep "\<$f\>" /tmp/git-tmp-xyz1 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
                  rt1+=( "$f" )
         fi
@@ -159,7 +153,6 @@ k4=0
 		dt2+=( "           " )
         else
                 rt2+=( "$f" )
-                #dt2+=( `awk 'NR==1{print  "$f" " "$3 "-" $4 "-" $6}' /tmp/git2 |cut -d ' ' -f2` )
                 dt2+=( `grep "\<$f\>" /tmp/git-tmp-xyz2 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
 
         fi
@@ -168,7 +161,6 @@ k4=0
 		dt3+=( "           " )
         else
                 rt3+=( "$f" )
-                #dt3+=( `awk 'NR==1{print  "$f" " "$3 "-" $4 "-" $6}' /tmp/git3 |cut -d ' ' -f2` )
                 dt3+=( `grep "\<$f\>" /tmp/git-tmp-xyz3 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
         fi
         if [[ "$k4" -eq 0 ]]; then
@@ -176,7 +168,6 @@ k4=0
 		dt4+=( "           " )
         else
                 rt4+=( "$f" )
-                #dt4+=( `awk 'NR==1{print  "$f" " "$3 "-" $4 "-" $6}' /tmp/git4 |cut -d ' ' -f2` )
                 dt4+=( `grep "\<$f\>" /tmp/git-tmp-xyz4 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
         fi
 
@@ -193,8 +184,8 @@ for i in ${tr[@]}; do   # loop to print the final result
         let k=$k+1
 done
 echo "-----------------------------------------------------------------------------------------------------------"
-# printf "| %-10s | %-10s | %-10s | %-10s |" "$msg_cont1" "$msg_cont2" "$msg_cont3"
         #will switch to the same branch where from the script has been executed
 
 `git checkout $crnt_branch`
+#remove tmp files
 rm /tmp/git-tmp-xyz*
