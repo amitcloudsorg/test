@@ -30,7 +30,7 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
                         msg_cont1=(`echo ${br_msg[@]} |wc -w`) #counting stored msg in array
                         br_msg1=( "${br_msg[@]}" )
                         #echo "sorted message count: ""$msg_cont1"  #printing msg count in array
-			 `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git1`
+			 `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git-tmp-xyz1`
 
                 fi
                 ###########################
@@ -41,7 +41,7 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
                         br_msg2=( "${br_msg[@]}" )
                         msg_cont2=(`echo ${br_msg2[@]} |wc -w`) #counting stored msg in array
                         #echo "sorted message count: ""$msg_cont2"
-			 `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git2`
+			 `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git-tmp-xyz2`
 
                 fi
                 ###########################
@@ -52,7 +52,7 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
                         br_msg3=( "${br_msg[@]}" )
                         msg_cont3=(`echo ${br_msg3[@]}|wc -w`)
                         #echo "sorted message count: ""$msg_cont3"
-			 `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git3`
+			 `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git-tmp-xyz3`
 
                 fi
                 ###########################
@@ -62,7 +62,7 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
                         br_msg4=( "${br_msg[@]}" )
                         msg_cont4=(`echo ${br_msg4[@]}|wc -w`)
                         #echo "sorted message count: ""$msg_cont4"
-			 `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git4`
+			 `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git-tmp-xyz4`
                 fi
 
                         #echo  "-----------------------------"
@@ -151,7 +151,7 @@ k4=0
 		 dt1+=( "           " )
         else
                  #dt1+=( `awk 'NR==1{print  "$f" " "$3 "-" $4 "-" $6}' /tmp/git1 |cut -d ' ' -f2` )
-                 dt1+=( `grep "\<$f\>" /tmp/git1 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
+                 dt1+=( `grep "\<$f\>" /tmp/git-tmp-xyz1 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
                  rt1+=( "$f" )
         fi
         if [[ "$k2" -eq 0 ]]; then
@@ -160,7 +160,7 @@ k4=0
         else
                 rt2+=( "$f" )
                 #dt2+=( `awk 'NR==1{print  "$f" " "$3 "-" $4 "-" $6}' /tmp/git2 |cut -d ' ' -f2` )
-                dt2+=( `grep "\<$f\>" /tmp/git2 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
+                dt2+=( `grep "\<$f\>" /tmp/git-tmp-xyz2 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
 
         fi
         if [[ "$k3" -eq 0 ]]; then
@@ -169,7 +169,7 @@ k4=0
         else
                 rt3+=( "$f" )
                 #dt3+=( `awk 'NR==1{print  "$f" " "$3 "-" $4 "-" $6}' /tmp/git3 |cut -d ' ' -f2` )
-                dt3+=( `grep "\<$f\>" /tmp/git3 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
+                dt3+=( `grep "\<$f\>" /tmp/git-tmp-xyz3 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
         fi
         if [[ "$k4" -eq 0 ]]; then
                 rt4+=( "    -      " )
@@ -177,7 +177,7 @@ k4=0
         else
                 rt4+=( "$f" )
                 #dt4+=( `awk 'NR==1{print  "$f" " "$3 "-" $4 "-" $6}' /tmp/git4 |cut -d ' ' -f2` )
-                dt4+=( `grep "\<$f\>" /tmp/git4 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
+                dt4+=( `grep "\<$f\>" /tmp/git-tmp-xyz4 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
         fi
 
 done
@@ -197,4 +197,4 @@ echo "--------------------------------------------------------------------------
         #will switch to the same branch where from the script has been executed
 
 `git checkout $crnt_branch`
-rm /tmp/git*
+rm /tmp/git-tmp-xyz*
