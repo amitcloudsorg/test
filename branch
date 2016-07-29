@@ -195,7 +195,4 @@ done
 echo "-----------------------------------------------------------------------------------------------------------"
 # printf "| %-10s | %-10s | %-10s | %-10s |" "$msg_cont1" "$msg_cont2" "$msg_cont3"
         #will switch to the same branch where from the script has been executed
-rm /tmp/git1  /tmp/git2  /tmp/git3
 `git checkout $crnt_branch`
-
-
