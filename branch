@@ -61,7 +61,7 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
 
                         br_msg4=( "${br_msg[@]}" )
                         msg_cont4=(`echo ${br_msg4[@]}|wc -w`)
-                        echo "sorted message count: ""$msg_cont4"
+                        #echo "sorted message count: ""$msg_cont4"
 			 `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git4`
                 fi
 
