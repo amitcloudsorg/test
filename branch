@@ -16,8 +16,8 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
                 if [ -z "$verify_branch" ];then
                         #change branch if current branch in not same as first input
                         git checkout $b
-                        echo  "-----------------------------"
-                        echo "sorted messages in $b"
+                        #echo  "-----------------------------"
+                        #echo "sorted messages in $b"
                 fi
                 
 		
@@ -29,7 +29,7 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
 
                         msg_cont1=(`echo ${br_msg[@]} |wc -w`) #counting stored msg in array
                         br_msg1=( "${br_msg[@]}" )
-                        echo "sorted message count: ""$msg_cont1"  #printing msg count in array
+                        #echo "sorted message count: ""$msg_cont1"  #printing msg count in array
 			 `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git1`
 
                 fi
@@ -40,7 +40,7 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
 
                         br_msg2=( "${br_msg[@]}" )
                         msg_cont2=(`echo ${br_msg2[@]} |wc -w`) #counting stored msg in array
-                        echo "sorted message count: ""$msg_cont2"
+                        #echo "sorted message count: ""$msg_cont2"
 			 `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git2`
 
                 fi
@@ -51,7 +51,7 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
 
                         br_msg3=( "${br_msg[@]}" )
                         msg_cont3=(`echo ${br_msg3[@]}|wc -w`)
-                        echo "sorted message count: ""$msg_cont3"
+                        #echo "sorted message count: ""$msg_cont3"
 			 `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git3`
 
                 fi
@@ -65,7 +65,7 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
 			 `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git4`
                 fi
 
-                        echo  "-----------------------------"
+                        #echo  "-----------------------------"
 
   #      }
                         #end of function
