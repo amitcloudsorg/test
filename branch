@@ -17,15 +17,9 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
                         #change branch if current branch in not same as first input
                         git checkout $b
                 fi
-
-
                 br_msg=(`git log | egrep -o ' [A-Z]{1,3}-[0-9]{1,6}$'|sort -u`) #machine msg pattern and sorting msg in alphabetical order. "XXX-123456"
-
-
                 if [[ "$b" == "$branch1" ]];then
-
-
-                        msg_cont1=(`echo ${br_msg[@]} |wc -w`) #counting stored msg in array
+                        #msg_cont1=(`echo ${br_msg[@]} |wc -w`) #counting stored msg in array
                         br_msg1=( "${br_msg[@]}" )
                          `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git-tmp-xyz1`
 
@@ -36,7 +30,7 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
                          file2=(`git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$'`)
 
                         br_msg2=( "${br_msg[@]}" )
-                        msg_cont2=(`echo ${br_msg2[@]} |wc -w`) #counting stored msg in array
+                        #msg_cont2=(`echo ${br_msg2[@]} |wc -w`) #counting stored msg in array
                          `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git-tmp-xyz2`
 
                 fi
@@ -188,7 +182,6 @@ for i in ${tr[@]}; do   # loop to print the final result
         let k=$k+1
 done
 echo "-----------------------------------------------------------------------------------------------------------"
-# printf "| %-10s | %-10s | %-10s | %-10s |" "$msg_cont1" "$msg_cont2" "$msg_cont3"
 #will switch to the same branch where from the script has been executed
 `git checkout $crnt_branch`
 ##will switch to the same branch where from the script has been executed
