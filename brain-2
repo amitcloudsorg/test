@@ -23,16 +23,15 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
                 if [[ "$b" == "$branch1" ]];then
                         msg_cont1=(`echo ${br_msg[@]} |wc -w`) #counting stored msg in array
                         br_msg1=( "${br_msg[@]}" )
-                         `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git1`
+                        `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git1`
 
                 fi
                 ###########################
                 #same process as above#
                 if [[ "$b" == "$branch2" ]]; then
-                         file2=(`git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$'`)
                         br_msg2=( "${br_msg[@]}" )
                         msg_cont2=(`echo ${br_msg2[@]} |wc -w`) #counting stored msg in array
-                         `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git2`
+                        `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git2`
                 fi
                 ###########################
                 #same steps as on above two branches.
@@ -40,14 +39,14 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
                 if [[ "$b" == "$branch3" ]]; then
                         br_msg3=( "${br_msg[@]}" )
                         msg_cont3=(`echo ${br_msg3[@]}|wc -w`)
-                         `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git3`
+                        `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git3`
                 fi
                 ###########################
                 #same steps as on above 3 branches.
                 if [[ "$b" == "$branch4" ]]; then
                         br_msg4=( "${br_msg[@]}" )
                         msg_cont4=(`echo ${br_msg4[@]}|wc -w`)
-                         `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git4`
+                        `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git4`
                 fi
 
 done  #loop ended
