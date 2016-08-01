@@ -144,8 +144,7 @@ k4=0
                  rt1+=( "    -      " )
 		 dt1+=( "           " )
         else
-                 #dt1+=( `awk 'NR==1{print  "$f" " "$3 "-" $4 "-" $6}' /tmp/git1 |cut -d ' ' -f2` )
-                 dt1+=( `grep "\<$f\>" /tmp/git1 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
+                 dt1+=( `grep "\<$f\>" /tmp/git1 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )#grep commit date
                  rt1+=( "$f" )
         fi
         if [[ "$k2" -eq 0 ]]; then
@@ -153,8 +152,7 @@ k4=0
 		dt2+=( "           " )
         else
                 rt2+=( "$f" )
-                #dt2+=( `awk 'NR==1{print  "$f" " "$3 "-" $4 "-" $6}' /tmp/git2 |cut -d ' ' -f2` )
-                dt2+=( `grep "\<$f\>" /tmp/git2 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
+                dt2+=( `grep "\<$f\>" /tmp/git2 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )#grep commit date
 
         fi
         if [[ "$k3" -eq 0 ]]; then
@@ -162,16 +160,14 @@ k4=0
 		dt3+=( "           " )
         else
                 rt3+=( "$f" )
-                #dt3+=( `awk 'NR==1{print  "$f" " "$3 "-" $4 "-" $6}' /tmp/git3 |cut -d ' ' -f2` )
-                dt3+=( `grep "\<$f\>" /tmp/git3 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
+                dt3+=( `grep "\<$f\>" /tmp/git3 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )#grep commit date
         fi
         if [[ "$k4" -eq 0 ]]; then
                 rt4+=( "    -      " )
 		dt4+=( "           " )
         else
                 rt4+=( "$f" )
-                #dt4+=( `awk 'NR==1{print  "$f" " "$3 "-" $4 "-" $6}' /tmp/git4 |cut -d ' ' -f2` )
-                dt4+=( `grep "\<$f\>" /tmp/git4 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
+                dt4+=( `grep "\<$f\>" /tmp/git4 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` ) #grep commit date
         fi
 
 done
@@ -187,8 +183,6 @@ for i in ${tr[@]}; do   # loop to print the final result
         let k=$k+1
 done
 echo "-----------------------------------------------------------------------------------------------------------"
-# printf "| %-10s | %-10s | %-10s | %-10s |" "$msg_cont1" "$msg_cont2" "$msg_cont3"
-        #will switch to the same branch where from the script has been executed
-`git checkout $crnt_branch`
+`git checkout $crnt_branch` #will checkout to the same branch where from script has been executed
 
 
