@@ -74,16 +74,6 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
 
 done  #loop ended
 
-################################################################
-#if you want to see all combined output you can uncomment below  lines starts with echo.
-
-#echo "combine output"
-#echo ${combined[@]}
-
-#echo "%------------end-------------%"
-####################################################################
-
-
                         # marge all array in one array
                         combined=( "${br_msg1[@]}" "${br_msg2[@]}" "${br_msg3[@]}" "${br_msg4[@]}" )
 
@@ -166,7 +156,6 @@ k4=0
                  rt1+=( "    -      " )
 		 dt1+=( "           " )
         else
-                 #dt1+=( `awk 'NR==1{print  "$f" " "$3 "-" $4 "-" $6}' /tmp/git1 |cut -d ' ' -f2` )
                  dt1+=( `grep "\<$f\>" /tmp/git1 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
                  rt1+=( "$f" )
         fi
@@ -175,7 +164,6 @@ k4=0
 		dt2+=( "           " )
         else
                 rt2+=( "$f" )
-                #dt2+=( `awk 'NR==1{print  "$f" " "$3 "-" $4 "-" $6}' /tmp/git2 |cut -d ' ' -f2` )
                 dt2+=( `grep "\<$f\>" /tmp/git2 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
 
         fi
@@ -184,7 +172,6 @@ k4=0
 		dt3+=( "           " )
         else
                 rt3+=( "$f" )
-                #dt3+=( `awk 'NR==1{print  "$f" " "$3 "-" $4 "-" $6}' /tmp/git3 |cut -d ' ' -f2` )
                 dt3+=( `grep "\<$f\>" /tmp/git3 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
         fi
         if [[ "$k4" -eq 0 ]]; then
@@ -192,7 +179,6 @@ k4=0
 		dt4+=( "           " )
         else
                 rt4+=( "$f" )
-                #dt4+=( `awk 'NR==1{print  "$f" " "$3 "-" $4 "-" $6}' /tmp/git4 |cut -d ' ' -f2` )
                 dt4+=( `grep "\<$f\>" /tmp/git4 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
         fi
 
