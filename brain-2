@@ -146,7 +146,7 @@ k4=0
                  rt1+=( "    -      " )
 		 dt1+=( "           " )
         else
-                 dt1+=( `grep "\<$f\>" /tmp/git1 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )#grep date of commit
+                 dt1+=( `grep "\<$f\>" /tmp/git1 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
                  rt1+=( "$f" )
         fi
         if [[ "$k2" -eq 0 ]]; then
