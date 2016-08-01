@@ -60,22 +60,9 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
                 fi
 
 
-  #      }
-                        #end of function
 
-   #collect_commit_msg  $b       #calling function alone with branches name as input
 
 done  #loop ended
-
-################################################################
-#if you want to see all combined output you can uncomment below  lines starts with echo.
-
-#echo "combine output"
-#echo ${combined[@]}
-
-#echo "%------------end-------------%"
-####################################################################
-
 
                         # marge all array in one array
                         combined=( "${br_msg1[@]}" "${br_msg2[@]}" "${br_msg3[@]}" "${br_msg4[@]}" )
@@ -84,8 +71,6 @@ if [  -n "$b"  ]; then #checking for string lenth zero
 
         sorted_unique_ids=(`echo "${combined[@]}" | tr ' ' '\n' | sort |uniq -u`) #storing unique msg in array
         # to see tollel number of filtered  unique msg
-        #echo "tottal sorted unique msg"
-        #echo ${sorted_unique_ids[@]} |wc -w
 
         #adding msg length branch wise in variable
         p1=$msg_cont1
