@@ -1,9 +1,13 @@
 #!/bin/bash
+#
+
+#echo -n  "Enter 2 to 4 branches name sprated by white separated : "
 #read user input
 branch1=$1
 branch2=$2
 branch3=$3
 branch4=$4
+#branch=0
 crnt_branch=`git branch | cut -d ' ' -f2`
 for b in  $branch1 $branch2 $branch3 $branch4; do
                 # verify inserted branch
@@ -12,8 +16,8 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
                 if [ -z "$verify_branch" ];then
                         #change branch if current branch in not same as first input
                         git checkout $b
-                        #echo  "-----------------------------"
-                        #echo "sorted messages in $b"
+                        echo  "-----------------------------"
+                        echo "sorted messages in $b"
                 fi
 
 
@@ -25,7 +29,7 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
 
                         msg_cont1=(`echo ${br_msg[@]} |wc -w`) #counting stored msg in array
                         br_msg1=( "${br_msg[@]}" )
-                        #echo "sorted message count: ""$msg_cont1"  #printing msg count in array
+                        echo "sorted message count: ""$msg_cont1"  #printing msg count in array
                          `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git-tmp-xyz1`
 
                 fi
@@ -36,7 +40,7 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
 
                         br_msg2=( "${br_msg[@]}" )
                         msg_cont2=(`echo ${br_msg2[@]} |wc -w`) #counting stored msg in array
-                        #echo "sorted message count: ""$msg_cont2"
+                        echo "sorted message count: ""$msg_cont2"
                          `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git-tmp-xyz2`
 
                 fi
@@ -47,7 +51,7 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
 
                         br_msg3=( "${br_msg[@]}" )
                         msg_cont3=(`echo ${br_msg3[@]}|wc -w`)
-                        #echo "sorted message count: ""$msg_cont3"
+                        echo "sorted message count: ""$msg_cont3"
                          `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git-tmp-xyz3`
 
                 fi
@@ -57,15 +61,28 @@ for b in  $branch1 $branch2 $branch3 $branch4; do
 
                         br_msg4=( "${br_msg[@]}" )
                         msg_cont4=(`echo ${br_msg4[@]}|wc -w`)
-                        #echo "sorted message count: ""$msg_cont4"
+                        echo "sorted message count: ""$msg_cont4"
                          `git log --pretty=format:"%h  %ad  %s"| egrep  ' [A-Z]{1,3}-[0-9]{1,6}$' > /tmp/git-tmp-xyz4`
                 fi
 
-                        #echo  "-----------------------------"
+                        echo  "-----------------------------"
 
+  #      }
+                        #end of function
 
+   #collect_commit_msg  $b       #calling function alone with branches name as input
 
 done  #loop ended
+
+################################################################
+#if you want to see all combined output you can uncomment below  lines starts with echo.
+
+#echo "combine output"
+#echo ${combined[@]}
+
+#echo "%------------end-------------%"
+####################################################################
+
 
                         # marge all array in one array
                         combined=( "${br_msg1[@]}" "${br_msg2[@]}" "${br_msg3[@]}" "${br_msg4[@]}" )
@@ -73,6 +90,9 @@ done  #loop ended
 if [  -n "$b"  ]; then #checking for string lenth zero
 
         sorted_unique_ids=(`echo "${combined[@]}" | tr ' ' '\n' | sort |uniq -u`) #storing unique msg in array
+        # to see tollel number of filtered  unique msg
+        #echo "tottal sorted unique msg"
+        #echo ${sorted_unique_ids[@]} |wc -w
 
         #adding msg length branch wise in variable
         p1=$msg_cont1
@@ -100,6 +120,7 @@ if [  -n "$b"  ]; then #checking for string lenth zero
                         else
                                  msg4+=( "$com" )
                         fi
+
 
                 fi
         let it=$it+1
@@ -143,32 +164,36 @@ k4=0
                  done
         if [[ "$k1" -eq 0 ]]; then  #if couldn't find match that will add "-" at missing location in array.
                  rt1+=( "    -      " )
-                 dt1+=( "    -      " )
+                 dt1+=( "           " )
         else
-                 dt1+=( `grep "\<$f\>" /tmp/git-tmp-xyz1 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )#retrieving commit date from tmp file
-                 rt1+=( "$f" )# storing  machhing result in array
+                 #dt1+=( `awk 'NR==1{print  "$f" " "$3 "-" $4 "-" $6}' /tmp/git-tmp-xyz1 |cut -d ' ' -f2` )
+                 dt1+=( `grep "\<$f\>" /tmp/git-tmp-xyz1 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
+                 rt1+=( "$f" )
         fi
         if [[ "$k2" -eq 0 ]]; then
                 rt2+=( "    -      " )
-                dt2+=( "    -      " )
+                dt2+=( "           " )
         else
                 rt2+=( "$f" )
-                dt2+=( `grep "\<$f\>" /tmp/git-tmp-xyz2 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )#retrieving commit date from tmp file
+                #dt2+=( `awk 'NR==1{print  "$f" " "$3 "-" $4 "-" $6}' /tmp/git-tmp-xyz2 |cut -d ' ' -f2` )
+                dt2+=( `grep "\<$f\>" /tmp/git-tmp-xyz2 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
 
         fi
         if [[ "$k3" -eq 0 ]]; then
                 rt3+=( "    -      " )
-                dt3+=( "    -      " )
+                dt3+=( "           " )
         else
                 rt3+=( "$f" )
-                dt3+=( `grep "\<$f\>" /tmp/git-tmp-xyz3 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )#retrieving commit date from tmp file
+                #dt3+=( `awk 'NR==1{print  "$f" " "$3 "-" $4 "-" $6}' /tmp/git-tmp-xyz3 |cut -d ' ' -f2` )
+                dt3+=( `grep "\<$f\>" /tmp/git-tmp-xyz3 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
         fi
         if [[ "$k4" -eq 0 ]]; then
                 rt4+=( "    -      " )
-                dt4+=( "    -      " )
+                dt4+=( "           " )
         else
                 rt4+=( "$f" )
-                dt4+=( `grep "\<$f\>" /tmp/git-tmp-xyz4 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )#retrieving commit date from tmp file
+                #dt4+=( `awk 'NR==1{print  "$f" " "$3 "-" $4 "-" $6}' /tmp/git-tmp-xyz4 |cut -d ' ' -f2` )
+                dt4+=( `grep "\<$f\>" /tmp/git-tmp-xyz4 |head -1 |awk '{print   " "$3 "-" $4 "-"$6}'` )
         fi
 
 done
@@ -179,13 +204,14 @@ echo "--------------------------------------------------------------------------
 k=0
 for i in ${tr[@]}; do   # loop to print the final result
 
+        #echo "----------------------------------------"
         printf "| %-11s  %-11s |  %-11s %-11s | %-11s %-11s | %-11s %-11s |\n" "${rt1[$k]}" "${dt1[$k]}"  "${rt2[$k]}" "${dt2[$k]}" "${rt3[$k]}" "${dt3[$k]}" "${rt4[$k]}" "${dt4[$k]}"
         let k=$k+1
 done
 echo "-----------------------------------------------------------------------------------------------------------"
-        #will switch to the same branch where from the script has been executed
-
+# printf "| %-10s | %-10s | %-10s | %-10s |" "$msg_cont1" "$msg_cont2" "$msg_cont3"
+#will switch to the same branch where from the script has been executed
 `git checkout $crnt_branch`
-#remove tmp files
+##will switch to the same branch where from the script has been executed
 rm /tmp/git-tmp-xyz*
 
